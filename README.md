@@ -1,6 +1,6 @@
 # Omar Osama — Personal Link Hub
 
-Minimal, dark-mode personal link page for Omar Osama.
+Minimal, dark-mode personal link page for Omar Osama featuring layered surface luminance elevation.
 
 ## Deployment to GitHub Pages
 1. Push `index.html`, `style.css`, `script.js`, `robots.txt`, and `sitemap.xml` to the root of your GitHub repository (`omar-osama-ali.github.io`).
