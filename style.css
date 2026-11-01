@@ -1,27 +1,19 @@
-/* ==========================================================================
-   Omar Osama — Official Links | Redesigned Premium UI/UX
-   ========================================================================== */
-
 :root {
-  --bg-primary: #000000;
-  --bg-secondary: #080808;
-  --surface-elevated: #101010;
-  --surface-hover: #161616;
+  --bg-primary: #050505;
+  --surface-elevated: rgba(18, 18, 20, 0.7);
+  --surface-hover: rgba(28, 28, 32, 0.85);
   
   --text-primary: #FFFFFF;
-  --text-secondary: #B8B8B8;
-  --text-muted: #858585;
+  --text-muted: #757575;
   
   --accent-gold: #D6B46A;
-  --gold-border: rgba(214, 180, 106, 0.22);
-  --gold-glow: rgba(214, 180, 106, 0.08);
+  --gold-glow: rgba(214, 180, 106, 0.25);
   
-  --border-subtle: rgba(255, 255, 255, 0.09);
-  --border-hover: rgba(255, 255, 255, 0.28);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(214, 180, 106, 0.4);
   
-  --radius-btn: 18px;
-  --max-width: 500px;
-  --transition-smooth: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-btn: 20px;
+  --max-width: 480px;
 }
 
 *, *::before, *::after {
@@ -30,37 +22,25 @@
   padding: 0;
 }
 
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
 body {
   width: 100%;
   min-height: 100vh;
-  min-height: 100svh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
   position: relative;
 }
 
-body::before {
-  content: '';
-  position: absolute;
+#bg-canvas {
+  position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 600px;
-  height: 320px;
-  background: radial-gradient(circle at 50% 0%, rgba(214, 180, 106, 0.04) 0%, transparent 70%);
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 0;
 }
@@ -68,8 +48,7 @@ body::before {
 .hub-container {
   width: 100%;
   max-width: var(--max-width);
-  margin-inline: auto;
-  padding: clamp(32px, 6vh, 56px) clamp(20px, 5vw, 24px);
+  padding: 48px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,32 +58,58 @@ body::before {
 
 .profile-header {
   text-align: center;
-  margin-bottom: clamp(32px, 6vh, 44px);
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-3d-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(214, 180, 106, 0.4), rgba(255, 255, 255, 0.05));
+  padding: 1px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-glow);
+  perspective: 500px;
+}
+
+.avatar-3d-inner {
   width: 100%;
+  height: 100%;
+  background: #0d0d0f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
 }
 
 .profile-name {
-  font-size: clamp(2.1rem, 5.5vw, 2.6rem);
+  font-size: 2.2rem;
   font-weight: 300;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--text-primary);
-  line-height: 1.15;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 .gold-divider {
-  width: 32px;
+  width: 36px;
   height: 2px;
-  background-color: var(--accent-gold);
-  margin: 18px auto 0;
-  border-radius: 2px;
-  box-shadow: 0 0 12px var(--gold-glow);
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin-top: 16px;
 }
 
 .links-nav {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(12px, 2vh, 16px);
+  gap: 16px;
+  perspective: 1000px;
 }
 
 .link-btn {
@@ -113,38 +118,32 @@ body::before {
   justify-content: space-between;
   width: 100%;
   min-height: 64px;
-  padding: 16px 22px;
-  background-color: var(--surface-elevated);
+  padding: 16px 24px;
+  background: var(--surface-elevated);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-btn);
   color: var(--text-primary);
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2px 8px rgba(0, 0, 0, 0.4);
-  transition: background-color var(--transition-smooth), 
-              border-color var(--transition-smooth), 
-              transform var(--transition-smooth), 
-              box-shadow var(--transition-smooth);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              border-color 0.25s ease, 
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
+  transform-style: preserve-3d;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
 }
 
 .link-btn:hover {
-  background-color: var(--surface-hover);
+  background: var(--surface-hover);
   border-color: var(--border-hover);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 24px rgba(0, 0, 0, 0.6);
-  transform: translateY(-1px);
+  transform: translateY(-3px) rotateX(4deg) scale(1.01);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 25px var(--gold-glow);
 }
 
 .link-btn:active {
-  transform: translateY(0) scale(0.995);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.link-btn:focus-visible {
-  outline: none;
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 0 3px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(0) scale(0.99);
 }
 
 .btn-icon {
@@ -152,47 +151,31 @@ body::before {
   align-items: center;
   justify-content: center;
   width: 28px;
-  height: 28px;
   color: var(--text-primary);
-  flex-shrink: 0;
-  opacity: 0.95;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .link-btn:hover .btn-icon {
-  opacity: 1;
   color: var(--accent-gold);
+  transform: translateZ(10px);
 }
 
 .btn-label {
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  letter-spacing: 0.03em;
-  color: var(--text-primary);
+  letter-spacing: 0.04em;
   text-align: center;
   flex-grow: 1;
-  padding-inline: 12px;
 }
 
 .btn-arrow {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
   color: var(--text-muted);
-  flex-shrink: 0;
-  transition: transform var(--transition-smooth), color var(--transition-smooth);
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .link-btn:hover .btn-arrow {
-  transform: translateX(3px);
+  transform: translateX(4px) translateZ(10px);
   color: var(--text-primary);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .link-btn, .btn-arrow, .btn-icon {
-    transition: none !important;
-    transform: none !important;
-  }
 }
